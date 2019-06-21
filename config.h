@@ -34,7 +34,11 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+
+ /* 1 means respect size hints in tiled resizals
+  * NOTE: as specified on the FAQ, setting this to 0 makes "seamless"
+  * transitions between windows, even if that space is not used...*/
+static const int resizehints = 0;    
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
