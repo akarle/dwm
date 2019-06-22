@@ -73,6 +73,9 @@ static const char *nextsong[]  = { "playerctl", "next", NULL };
 static const char *prevsong[]  = { "playerctl", "previous", NULL };
 static const char *playpause[] = { "playerctl", "play-pause", NULL };
 
+static const char *lightup[] = { "light", "-A", "10", NULL };
+static const char *lightdown[] = { "light", "-U", "10", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -84,6 +87,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioPlay, spawn,   {.v = playpause } },
 	{ 0,                            XF86XK_AudioNext, spawn,   {.v = nextsong } },
 	{ 0,                            XF86XK_AudioPrev, spawn,   {.v = prevsong } },
+	{ 0,                            XF86XK_MonBrightnessUp, spawn, {.v = lightup} },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = lightdown}},
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
