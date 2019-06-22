@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h> /* Needed for Volume controls */
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -64,11 +65,25 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *lockcmd[]  = { "i3lock", "-c", "00061a", NULL };
 
+static const char *volup[]    = { "pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *voldown[]  = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *volmute[]  = { "pactl", "set-sink-mute", "0", "toggle", NULL };
+
+static const char *nextsong[]  = { "playerctl", "next", NULL };
+static const char *prevsong[]  = { "playerctl", "previous", NULL };
+static const char *playpause[] = { "playerctl", "play-pause", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_semicolon, spawn,       {.v = lockcmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = volup } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = voldown } },
+	{ 0,                            XF86XK_AudioMute, spawn,   {.v = volmute } },
+	{ 0,                            XF86XK_AudioPlay, spawn,   {.v = playpause } },
+	{ 0,                            XF86XK_AudioNext, spawn,   {.v = nextsong } },
+	{ 0,                            XF86XK_AudioPrev, spawn,   {.v = prevsong } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
