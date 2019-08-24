@@ -7,6 +7,12 @@ Requirements
 ------------
 In order to build dwm you need the Xlib header files.
 
+NOTE: I have found that installing the following via pacman is sufficient:
+
+    - xorg-server (obviously)
+    - xorg-xinit (for startx)
+    - dmenu (gives libxft)
+
 
 Installation
 ------------
